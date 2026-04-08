@@ -100,12 +100,29 @@
                     <a href="#home" class="text-gray-600 hover:text-brand-600 dark:text-gray-300 dark:hover:text-white font-medium transition-colors">Home</a>
                     <a href="#skills" class="text-gray-600 hover:text-brand-600 dark:text-gray-300 dark:hover:text-white font-medium transition-colors">Skills</a>
                     <a href="#projects" class="text-gray-600 hover:text-brand-600 dark:text-gray-300 dark:hover:text-white font-medium transition-colors">Projects</a>
+                    <a href="#experience" class="text-gray-600 hover:text-brand-600 dark:text-gray-300 dark:hover:text-white font-medium transition-colors">Experience</a>
                 </nav>
                 <div class="hidden md:flex items-center">
                     <a href="#contact" class="px-5 py-2.5 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-medium hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300">
                         Let's Talk
                     </a>
                 </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 dark:text-gray-300 hover:text-brand-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Menu Panel -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <a href="#home" class="block px-4 py-2 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 rounded">Home</a>
+                <a href="#skills" class="block px-4 py-2 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 rounded">Skills</a>
+                <a href="#projects" class="block px-4 py-2 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 rounded">Projects</a>
+                <a href="#experience" class="block px-4 py-2 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 rounded">Experience</a>
+                <a href="#contact" class="block mt-2 px-4 py-2 text-sm bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg text-center font-medium">Let's Talk</a>
             </div>
         </div>
     </header>
@@ -148,10 +165,14 @@
                             "Mahasiswa Teknik Informatika yang antusias dalam merancang solusi perangkat lunak yang efisien. Di luar coding, saya juga aktif mengelola organisasi sebagai Sekretaris Formadiksi Polinema."
                         </p>
                         
-                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <div class="flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-4">
                             <a href="#projects" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-semibold hover:-translate-y-1 hover:shadow-xl hover:shadow-gray-900/20 dark:hover:shadow-white/20 transition-all duration-300 flex items-center justify-center gap-2">
                                 Jelajahi Proyek
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                            </a>
+                            <a href="/dokumen/cv.pdf" download="CV_NorRahmanMaulana" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-600 text-white font-semibold hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-500/30 transition-all duration-300 flex items-center justify-center gap-2">
+                                Download CV
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                             </a>
                             <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-white dark:bg-[#1a1c23] border border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white font-semibold hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center">
                                 Hubungi Saya
@@ -347,6 +368,44 @@
             </div>
         </section>
 
+        <!-- Experience Section -->
+        <section id="experience" class="py-24 bg-white dark:bg-[#0b0c10] relative z-10 border-t border-gray-100 dark:border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                    <span class="text-brand-600 dark:text-brand-400 font-semibold tracking-wider uppercase text-sm">Experience</span>
+                    <h2 class="mt-2 text-3xl font-extrabold font-display text-gray-900 dark:text-white sm:text-4xl">
+                        Pengalaman Berorganisasi
+                    </h2>
+                    <p class="mt-4 text-lg text-gray-600 dark:text-gray-400 font-light">
+                        Aktif berkontribusi dan memimpin dalam lingkungan organisasi kampus.
+                    </p>
+                </div>
+
+                <div class="max-w-4xl mx-auto">
+                    <!-- Timeline Card -->
+                    <div class="relative pl-8 sm:pl-0">
+                        <div class="hidden sm:block absolute left-1/2 w-[2px] h-full bg-gray-200 dark:bg-gray-800 transform -translate-x-1/2"></div>
+                        
+                        <div class="relative flex flex-col sm:flex-row justify-between items-center mb-12 reveal">
+                            <div class="w-full sm:w-5/12 text-left sm:text-right pr-0 sm:pr-8 mb-4 sm:mb-0">
+                                <h3 class="text-xl font-bold font-display text-gray-900 dark:text-white">Sekretaris</h3>
+                                <div class="text-brand-600 dark:text-brand-400 font-medium my-1">Formadiksi Polinema</div>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm font-light mt-2">Mengelola administrasi, persuratan, dan dokumentasi rapat. Mengkoordinasikan kegiatan organisasi yang berfokus pada kesejahteraan dan pengembangan mahasiswa bidikmisi.</p>
+                            </div>
+                            <!-- Point -->
+                            <div class="absolute left-0 sm:left-1/2 w-8 h-8 rounded-full bg-brand-500 border-4 border-white dark:border-[#0b0c10] shadow-md transform -translate-x-1/2 flex items-center justify-center sm:-ml-0 ml-[3px]">
+                                <div class="w-2.5 h-2.5 rounded-full bg-white"></div>
+                            </div>
+                            <div class="w-full sm:w-5/12 pl-0 sm:pl-8">
+                                <div class="inline-block px-4 py-1.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm rounded-full font-medium shadow-sm border border-gray-200 dark:border-gray-700">Tahun Sekarang</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- Footer -->
@@ -354,9 +413,20 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center pb-8 border-b border-gray-200 dark:border-gray-800 mb-8">
                 
-                <div class="mb-6 md:mb-0 text-center md:text-left">
+                <div class="mb-6 md:mb-0 text-center md:text-left flex flex-col gap-2">
                     <span class="font-display font-bold text-2xl tracking-tight text-gray-900 dark:text-white">Nor Rahman</span>
-                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Membangun pengalaman digital yang lebih baik.</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Membangun pengalaman digital yang lebih baik.</p>
+                    
+                    <div class="mt-4 flex flex-col gap-3">
+                        <a href="mailto:emailanda@gmail.com" class="flex items-center justify-center md:justify-start gap-3 text-sm text-gray-600 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">
+                            <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center"><svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
+                            <span>email.anda@gmail.com</span>
+                        </a>
+                        <a href="https://wa.me/6281234567890" target="_blank" class="flex items-center justify-center md:justify-start gap-3 text-sm text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                            <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center"><svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></div>
+                            <span>+62 812-3456-7890</span>
+                        </a>
+                    </div>
                 </div>
                 
                 <div class="flex items-center space-x-6">
@@ -408,11 +478,19 @@
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 20) {
                     header.classList.add('shadow-md', 'py-0');
-                    // Additional styling tweaks could be done via classes if desired
                 } else {
                     header.classList.remove('shadow-md', 'py-0');
                 }
             });
+
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
         });
     </script>
 </body>
