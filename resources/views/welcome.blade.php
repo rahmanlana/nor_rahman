@@ -2,6 +2,14 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
 <head>
     <meta charset="utf-8">
+    <script>
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Nor Rahman Maulana | Portfolio</title>
 
@@ -18,7 +26,7 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
             tailwind.config = {
-                darkMode: 'media',
+                darkMode: 'class',
                 theme: {
                     extend: {
                         fontFamily: {
@@ -102,13 +110,23 @@
                     <a href="#projects" class="text-gray-600 hover:text-brand-600 dark:text-gray-300 dark:hover:text-white font-medium transition-colors">Projects</a>
                     <a href="#experience" class="text-gray-600 hover:text-brand-600 dark:text-gray-300 dark:hover:text-white font-medium transition-colors">Experience</a>
                 </nav>
-                <div class="hidden md:flex items-center">
+                <div class="hidden md:flex items-center gap-4">
+                    <!-- Theme toggle button (Desktop) -->
+                    <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none rounded-lg text-sm p-2 transition-colors">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                    </button>
                     <a href="#contact" class="px-5 py-2.5 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-medium hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300">
                         Let's Talk
                     </a>
                 </div>
                 <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
+                <div class="md:hidden flex items-center gap-2">
+                    <!-- Theme toggle button (Mobile) -->
+                    <button id="theme-toggle-mobile" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none rounded-lg text-sm p-2 transition-colors">
+                        <svg id="theme-toggle-dark-icon-mobile" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                        <svg id="theme-toggle-light-icon-mobile" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                    </button>
                     <button id="mobile-menu-btn" class="text-gray-600 dark:text-gray-300 hover:text-brand-600 focus:outline-none">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
@@ -153,16 +171,15 @@
                         </div>
                         
                         <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold font-display tracking-tight text-gray-900 dark:text-white mb-6 leading-[1.1]">
-                            Hi, I'm <br class="hidden sm:block">
-                            <span class="text-gradient">Nor Rahman Maulana</span>
+                            {!! $settings->hero_title ?? "Hi, I'm <br class=\"hidden sm:block\">\n<span class=\"text-gradient\">Nor Rahman Maulana</span>" !!}
                         </h1>
                         
                         <h2 class="text-xl sm:text-2xl font-medium text-gray-700 dark:text-gray-300 mb-6">
-                            IT Student at Polinema | Web & Mobile Developer
+                            {{ $settings->hero_subtitle ?? 'IT Student at Polinema | Web & Mobile Developer' }}
                         </h2>
                         
                         <p class="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
-                            "Mahasiswa Teknik Informatika yang antusias dalam merancang solusi perangkat lunak yang efisien. Di luar coding, saya juga aktif mengelola organisasi sebagai Sekretaris Formadiksi Polinema."
+                            {{ $settings->about_text ?? '"Mahasiswa Teknik Informatika yang antusias dalam merancang solusi perangkat lunak yang efisien. Di luar coding, saya juga aktif mengelola organisasi sebagai Sekretaris Formadiksi Polinema."' }}
                         </p>
                         
                         <div class="flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-4">
@@ -170,7 +187,7 @@
                                 Jelajahi Proyek
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                             </a>
-                            <a href="/dokumen/cv.pdf" download="CV_NorRahmanMaulana" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-600 text-white font-semibold hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-500/30 transition-all duration-300 flex items-center justify-center gap-2">
+                            <a href="{{ $settings->cv_link ? asset('storage/' . $settings->cv_link) : '/dokumen/cv.pdf' }}" download="CV_NorRahmanMaulana" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-600 text-white font-semibold hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-500/30 transition-all duration-300 flex items-center justify-center gap-2">
                                 Download CV
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                             </a>
@@ -307,6 +324,39 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                     
+                    @forelse($projects as $project)
+                    <div class="group bg-white dark:bg-[#1a1c23] rounded-[2rem] overflow-hidden border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col reveal">
+                        <!-- Image Container with Hover Zoom -->
+                        <div class="relative overflow-hidden aspect-[4/3] bg-gray-100 dark:bg-gray-800">
+                            <img src="{{ $project->image ? asset('storage/' . $project->image) : 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop' }}" alt="{{ $project->title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out opacity-90 group-hover:opacity-100">
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent"></div>
+                            
+                            <!-- Badges Overlay -->
+                            <div class="absolute bottom-4 left-4 flex flex-wrap gap-2">
+                                @if(is_array($project->tags))
+                                    @foreach($project->tags as $tag)
+                                    <span class="px-2.5 py-1 backdrop-blur-md bg-white/20 border border-white/30 text-white rounded-lg text-xs font-semibold shadow-lg">{{ $tag }}</span>
+                                    @endforeach
+                                @endif
+                            </div>
+                        </div>
+                        
+                        <div class="p-8 flex flex-col grow">
+                            <h3 class="text-2xl font-bold font-display text-gray-900 dark:text-white mb-3 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                                {{ $project->title }}
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 font-light leading-relaxed mb-6 grow">
+                                {{ $project->description }}
+                            </p>
+                            @if($project->link)
+                            <a href="{{ $project->link }}" target="_blank" class="inline-flex items-center text-brand-600 dark:text-brand-400 font-semibold group-hover:text-brand-700 dark:group-hover:text-brand-300">
+                                Lihat Detail
+                                <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </a>
+                            @endif
+                        </div>
+                    </div>
+                    @empty
                     <!-- Project 1 -->
                     <div class="group bg-white dark:bg-[#1a1c23] rounded-[2rem] overflow-hidden border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col reveal">
                         <!-- Image Container with Hover Zoom -->
@@ -363,6 +413,7 @@
                             </a>
                         </div>
                     </div>
+                    @endforelse
 
                 </div>
             </div>
@@ -386,6 +437,22 @@
                     <div class="relative pl-8 sm:pl-0">
                         <div class="hidden sm:block absolute left-1/2 w-[2px] h-full bg-gray-200 dark:bg-gray-800 transform -translate-x-1/2"></div>
                         
+                        @forelse($experiences as $exp)
+                        <div class="relative flex flex-col sm:flex-row justify-between items-center mb-12 reveal">
+                            <div class="w-full sm:w-5/12 text-left sm:text-right pr-0 sm:pr-8 mb-4 sm:mb-0">
+                                <h3 class="text-xl font-bold font-display text-gray-900 dark:text-white">{{ $exp->role }}</h3>
+                                <div class="text-brand-600 dark:text-brand-400 font-medium my-1">{{ $exp->company }}</div>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm font-light mt-2">{{ $exp->description }}</p>
+                            </div>
+                            <!-- Point -->
+                            <div class="absolute left-0 sm:left-1/2 w-8 h-8 rounded-full bg-brand-500 border-4 border-white dark:border-[#0b0c10] shadow-md transform -translate-x-1/2 flex items-center justify-center sm:-ml-0 ml-[3px]">
+                                <div class="w-2.5 h-2.5 rounded-full bg-white"></div>
+                            </div>
+                            <div class="w-full sm:w-5/12 pl-0 sm:pl-8">
+                                <div class="inline-block px-4 py-1.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm rounded-full font-medium shadow-sm border border-gray-200 dark:border-gray-700">{{ $exp->duration }}</div>
+                            </div>
+                        </div>
+                        @empty
                         <div class="relative flex flex-col sm:flex-row justify-between items-center mb-12 reveal">
                             <div class="w-full sm:w-5/12 text-left sm:text-right pr-0 sm:pr-8 mb-4 sm:mb-0">
                                 <h3 class="text-xl font-bold font-display text-gray-900 dark:text-white">Sekretaris</h3>
@@ -400,6 +467,7 @@
                                 <div class="inline-block px-4 py-1.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm rounded-full font-medium shadow-sm border border-gray-200 dark:border-gray-700">Tahun Sekarang</div>
                             </div>
                         </div>
+                        @endforelse
 
                     </div>
                 </div>
@@ -418,24 +486,24 @@
                     <p class="text-sm text-gray-500 dark:text-gray-400">Membangun pengalaman digital yang lebih baik.</p>
                     
                     <div class="mt-4 flex flex-col gap-3">
-                        <a href="mailto:emailanda@gmail.com" class="flex items-center justify-center md:justify-start gap-3 text-sm text-gray-600 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">
-                            <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center"><svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
-                            <span>email.anda@gmail.com</span>
+                        <a href="mailto:{{ $settings->email ?? 'email.anda@gmail.com' }}" class="flex items-center justify-center md:justify-start gap-3 text-sm text-gray-600 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">
+                            <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center"><svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2-2v10a2 2 0 002 2z"/></svg></div>
+                            <span>{{ $settings->email ?? 'email.anda@gmail.com' }}</span>
                         </a>
-                        <a href="https://wa.me/6281234567890" target="_blank" class="flex items-center justify-center md:justify-start gap-3 text-sm text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                        <a href="https://wa.me/{{ $settings->whatsapp ?? '6281234567890' }}" target="_blank" class="flex items-center justify-center md:justify-start gap-3 text-sm text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors">
                             <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center"><svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></div>
-                            <span>+62 812-3456-7890</span>
+                            <span>+{{ $settings->whatsapp ?? '62 812-3456-7890' }}</span>
                         </a>
                     </div>
                 </div>
                 
                 <div class="flex items-center space-x-6">
-                    <a href="https://github.com/norrahman" target="_blank" aria-label="GitHub" class="text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                    <a href="{{ $settings->github_url ?? 'https://github.com/norrahman' }}" target="_blank" aria-label="GitHub" class="text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
                         <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
                         </svg>
                     </a>
-                    <a href="https://linkedin.com/in/nor-rahman-maulana" target="_blank" aria-label="LinkedIn" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                    <a href="{{ $settings->linkedin_url ?? 'https://linkedin.com/in/nor-rahman-maulana' }}" target="_blank" aria-label="LinkedIn" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                         <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" />
                         </svg>
@@ -491,6 +559,50 @@
                     mobileMenu.classList.toggle('hidden');
                 });
             }
+
+            // Dark Mode Toggle Logic
+            const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+            const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+            const themeToggleDarkIconMobile = document.getElementById('theme-toggle-dark-icon-mobile');
+            const themeToggleLightIconMobile = document.getElementById('theme-toggle-light-icon-mobile');
+
+            if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                if(themeToggleLightIcon) themeToggleLightIcon.classList.remove('hidden');
+                if(themeToggleLightIconMobile) themeToggleLightIconMobile.classList.remove('hidden');
+            } else {
+                if(themeToggleDarkIcon) themeToggleDarkIcon.classList.remove('hidden');
+                if(themeToggleDarkIconMobile) themeToggleDarkIconMobile.classList.remove('hidden');
+            }
+
+            const themeToggleBtns = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
+
+            themeToggleBtns.forEach(btn => {
+                if(!btn) return;
+                btn.addEventListener('click', function() {
+                    themeToggleDarkIcon?.classList.toggle('hidden');
+                    themeToggleLightIcon?.classList.toggle('hidden');
+                    themeToggleDarkIconMobile?.classList.toggle('hidden');
+                    themeToggleLightIconMobile?.classList.toggle('hidden');
+
+                    if (localStorage.getItem('color-theme')) {
+                        if (localStorage.getItem('color-theme') === 'light') {
+                            document.documentElement.classList.add('dark');
+                            localStorage.setItem('color-theme', 'dark');
+                        } else {
+                            document.documentElement.classList.remove('dark');
+                            localStorage.setItem('color-theme', 'light');
+                        }
+                    } else {
+                        if (document.documentElement.classList.contains('dark')) {
+                            document.documentElement.classList.remove('dark');
+                            localStorage.setItem('color-theme', 'light');
+                        } else {
+                            document.documentElement.classList.add('dark');
+                            localStorage.setItem('color-theme', 'dark');
+                        }
+                    }
+                });
+            });
         });
     </script>
 </body>
